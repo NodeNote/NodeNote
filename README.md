@@ -92,6 +92,11 @@ Implemented features
 
 ### Blocks
 
-A *Block* is somet
+A *Block* is something you can add to a *Notebook*. A *Block* can be one
+of these types:
+
+-   *code* - Input with code that has a selectable output (right now
+    just inspecting the output JSON)
+-   *markdown* - Input with markdown that has HTML as a output
 
   [iPython Notebook]: http://ipython.org/notebook.html
