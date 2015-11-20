@@ -4,22 +4,6 @@ Experiment with NodeJS/Browser JavaScript directly in the browser
 NodeNote is a notebook application with support for executing
 JavaScript in NodeJS and browser environment. Similar to [iPython Notebook]
 
-<!-- TOC depth:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-- [NodeNote](#nodenote)
-		- [Plugins for data visualization](#plugins-for-data-visualization)
-		- [Dynamically load npm packages](#dynamically-load-npm-packages)
-		- [Save variables to next block](#save-variables-to-next-block)
-		- [Time traveling](#time-traveling)
-		- [Support the latest nodejs feature](#support-the-latest-nodejs-feature)
-		- [Support any nodejs version](#support-any-nodejs-version)
-		- [Support saving entire pages of executed scripts and output to IPFS and publish it](#support-saving-entire-pages-of-executed-scripts-and-output-to-ipfs-and-publish-it)
-		- [100% offline support](#100-offline-support)
-		- [VIM keybindings](#vim-keybindings)
-		- [Open Source](#open-source)
-		- [Blocks](#blocks)
-<!-- /TOC --># NodeNote
-
 MVP Features
 ------------
 
