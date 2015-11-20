@@ -1,0 +1,53 @@
+body, html {
+  background-color: #ecf0f1;
+  margin: 0;
+  padding: 0;
+}
+
+#logo {
+  position: absolute;
+  font-family: Verdana;
+  font-size: 20px;
+  color: #5C6570;
+  line-height: 24px;
+  left: 20px;
+  top: 20px;
+}
+
+#notebook {
+  position: relative;
+  width: 700px;
+  left: 50%;
+  margin-left: -350px;
+  padding-top: 100px;
+}
+
+.markdown_block {
+  padding: 10px;
+  background: #FFFFFF;
+  border: 1px solid #979797;
+}
+
+.markdown_block p {
+  margin: 0px;
+}
+
+.markdown_block, .markdown_block textarea {
+  font-family: UbuntuMono-Regular;
+  font-size: 20px;
+  color: #5C6570;
+  line-height: 25px;
+  max-width: 100%;
+  min-height: 70px;
+}
+
+.markdown_block textarea {
+  width: 100%;
+  border: 0px;
+  overflow-y: scroll;
+  outline: none;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
