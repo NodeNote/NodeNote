@@ -25,6 +25,7 @@ export default class MarkdownBlock extends Component {
       output = <textarea
         ref='textarea'
         onBlur={this.handleOnBlur.bind(this)}
+      onChange={this.props.handleChange.bind(this)}
         value='Markdown *goes* **here**'
       />
     } else {

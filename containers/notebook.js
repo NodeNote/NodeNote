@@ -10,7 +10,7 @@ import {
 } from '../actions'
 
 export default class Notebook extends Component {
-  handleOnChange (new_text) {
+  handleOnChange (index, new_text) {
     this.props.dispatch({
       type: 'CHANGE_TEXT',
       text: new_text
@@ -28,7 +28,7 @@ export default class Notebook extends Component {
   render () {
       // {JSON.stringify(this.props.blocks, null, 2)}
     return <div id='notebook'>
-      <Blocks blocks={this.props.blocks}/>
+      <Blocks blocks={this.props.blocks} onChange={this.handleOnChange.bind(this)}/>
       <AddBlocksBlock onAddBlock={this.handleOnAddBlock.bind(this)}/>
     </div>
   }

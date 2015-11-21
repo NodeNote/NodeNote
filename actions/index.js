@@ -34,3 +34,11 @@ export function changeBlockContent (block_index, content) {
     content
   }
 }
+
+export function moveBlock (from, to) {
+  return {
+    type: consts.MOVE_BLOCK,
+    from,
+    to
+  }
+}

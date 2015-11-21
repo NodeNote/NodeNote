@@ -22,17 +22,25 @@ export function reducer (state = initialState, action) {
       })
     case consts.ADD_MARKDOWN_BLOCK:
       return Object.assign({}, state, {
-        blocks: state.blocks.concat(consts.MARKDOWN_BLOCK)
+        blocks: state.blocks.concat(Object.assign({}, consts.MARKDOWN_BLOCK, {
+          index: state.blocks.length
+        }))
       })
     case consts.ADD_CODE_BLOCK:
       return Object.assign({}, state, {
-        blocks: state.blocks.concat(consts.CODE_BLOCK)
+      blocks: state.blocks.concat(Object.assign({}, consts.CODE_BLOCK, {
+          index: state.blocks.length
+        }))
       })
     case consts.CHANGE_BLOCK_CONTENT:
       const block = state.blocks[action.block_index]
       const new_block = Object.assign({}, block, {content: action.content})
       state.blocks[action.block_index] = new_block
       return Object.assign({}, state)
+    case consts.MOVE_BLOCK:
+      const from_block = state.blocks.splice(action.from, 1)
+      state.blocks.splice(action.to, 0, from_block[0])
+      return state
     default:
       return state
   }
