@@ -50,7 +50,7 @@ describe('reducer', () => {
         const output_state = reducer(initialState, action)
         assert.equal(output_state.blocks.length, 1)
         assert.equal(output_state.blocks[0].type, 'markdown')
-        assert.equal(output_state.blocks[0].content, null)
+        assert.equal(output_state.blocks[0].content, 'Markdown goes **here**')
         assert.equal(output_state.blocks[0].index, 0)
       })
       it('Change content of a added markdown block', () => {
@@ -70,7 +70,7 @@ describe('reducer', () => {
         const output_state = reducer(initialState, action)
         assert.equal(output_state.blocks.length, 1)
         assert.equal(output_state.blocks[0].type, 'code')
-        assert.equal(output_state.blocks[0].content, null)
+        assert.equal(output_state.blocks[0].content, 'var hello = \'world\'')
         assert.equal(output_state.blocks[0].index, 0)
         assert.equal(output_state.blocks[0].output, null)
         assert.equal(output_state.blocks[0].output_mode, 'json')

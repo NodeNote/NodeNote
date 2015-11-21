@@ -12,7 +12,7 @@ export default class App extends Component {
   render () {
     return <Provider store={store}>{() => {
       return <div className='wrapper'>
-        <div id="logo">NodeNote</div>
+        <div id='logo'>NodeNote</div>
         <Notebook/>
       </div>
     }}</Provider>

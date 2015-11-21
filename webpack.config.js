@@ -8,11 +8,11 @@ var plugins = [
 ]
 var entry = null
 
-  entry = ['./index.js']
-  entry.push('webpack-dev-server/client?http://localhost:3000')
-  entry.push('webpack/hot/only-dev-server')
-  plugins.push(new webpack.HotModuleReplacementPlugin())
-  plugins.push(new webpack.NoErrorsPlugin())
+entry = ['./index.js']
+entry.push('webpack-dev-server/client?http://localhost:3000')
+entry.push('webpack/hot/only-dev-server')
+plugins.push(new webpack.HotModuleReplacementPlugin())
+plugins.push(new webpack.NoErrorsPlugin())
 
 module.exports = {
   devtool: 'eval',

@@ -8,8 +8,8 @@ export default class MarkdownBlock extends Component {
       focus: false
     }
   }
-  componentDidUpdate() {
-    if(this.state.focus) {
+  componentDidUpdate () {
+    if (this.state.focus) {
       this.refs.textarea.focus()
     }
   }
@@ -19,19 +19,24 @@ export default class MarkdownBlock extends Component {
   handleOnBlur () {
     this.setState({focus: false})
   }
+  handleChange (ev) {
+    this.props.onChange(this.props.index, ev.target.value)
+  }
   render () {
     let output
+    const content = this.props.content ? this.props.content : ''
+    console.log(content)
     if (this.state.focus) {
       output = <textarea
         ref='textarea'
         onBlur={this.handleOnBlur.bind(this)}
-      onChange={this.props.handleChange.bind(this)}
-        value='Markdown *goes* **here**'
+        onChange={this.handleChange.bind(this)}
+        value={content}
       />
     } else {
       output = <div
         onClick={this.handleOnFocus.bind(this)}
-        dangerouslySetInnerHTML={{__html: marked('Markdown *goes* **here**')}}
+        dangerouslySetInnerHTML={{__html: marked(content)}}
       />
     }
     return <div className='markdown_block'>
@@ -40,5 +45,7 @@ export default class MarkdownBlock extends Component {
   }
 }
 MarkdownBlock.propTypes = {
-  block: PropTypes.object.isRequired
+  content: PropTypes.string,
+  index: PropTypes.number.isRequired,
+  onChange: PropTypes.func.isRequired
 }

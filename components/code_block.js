@@ -1,19 +1,19 @@
 import React, { Component, PropTypes } from 'react'
-import Editor from './editor'
+// import Editor from './editor'
 
 export default class CodeBlock extends Component {
-  // handleOnChange (new_code) {
-  //   this.props.onChange(new_code)
-  // }
+  handleOnChange (ev) {
+    this.props.onChange(this.props.block.index, ev.target.value)
+  }
   render () {
     // return <Editor value={this.props.script} onChange={this.handleOnChange.bind(this)}/>
     return <div>
-      <textarea defaultValue='Code goes here'/>
+      <textarea value={this.props.block.content} onChange={this.handleOnChange.bind(this)}/>
     </div>
   }
 }
 
-// CodeBlock.propTypes = {
-//   script: PropTypes.string.isRequired,
-//   onChange: PropTypes.func.isRequired
-// }
+CodeBlock.propTypes = {
+  block: PropTypes.object.isRequired,
+  onChange: PropTypes.func.isRequired
+}

@@ -7,13 +7,13 @@ export const MOVE_BLOCK = 'MOVE_BLOCK'
 
 export const MARKDOWN_BLOCK = {
   type: 'markdown',
-  content: null,
+  content: 'Markdown goes **here**',
   index: 0
 }
 
 export const CODE_BLOCK = {
   type: 'code',
-  content: null,
+  content: 'var hello = \'world\'',
   index: 0,
   output: null,
   output_mode: 'json'
