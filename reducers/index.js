@@ -35,11 +35,11 @@ export function reducer (state = initialState, action) {
     case consts.CHANGE_BLOCK_CONTENT:
       const block = state.blocks[action.block_index]
       const new_block = Object.assign({}, block, {content: action.content})
-      const new_state = Object.assign({}, state)
-      new_state.blocks[action.block_index] = new_block
-      console.log('new_state')
-      console.log(JSON.stringify(new_state))
-      return new_state
+      const new_blocks = state.blocks.concat([])
+      new_blocks[action.block_index] = new_block
+      return {
+        blocks: new_blocks
+      }
     case consts.MOVE_BLOCK:
       const from_block = state.blocks.splice(action.from, 1)
       state.blocks.splice(action.to, 0, from_block[0])
