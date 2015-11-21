@@ -1,50 +1,38 @@
 import * as consts from '../constants'
+import Immutable from 'immutable'
 
-export const initialState = {
-  blocks: [
-    // {
-    //   type: 'markdown',
-    //   text: 'Hello, **testing** this out!'
-    // },
-    // {
-    //   type: 'code',
-    //   input: 'var hello = \'world\'',
-    //   output: null
-    // }
-  ]
+export const initialState = Immutable.Map({
+  blocks: Immutable.List()
+})
+
+const action_map = {
+  [consts.ADD_MARKDOWN_BLOCK]: (state, action) => {
+    const blocks = state.get('blocks')
+    const new_block = consts.MARKDOWN_BLOCK.set('index', blocks.size)
+    return state.set('blocks', blocks.push(new_block))
+  },
+  [consts.ADD_CODE_BLOCK]: (state, action) => {
+    const blocks = state.get('blocks')
+    const new_block = consts.CODE_BLOCK.set('index', blocks.size)
+    return state.set('blocks', blocks.push(new_block))
+  },
+  [consts.CHANGE_BLOCK_CONTENT]: (state, action) => {
+    const block = state.get('blocks').get(action.block_index)
+    const new_block = block.set('content', action.content)
+    const new_blocks = state.get('blocks').set(action.block_index, new_block)
+    return state.set('blocks', new_blocks)
+  },
+  [consts.MOVE_BLOCK]: (state, action) => {
+    const from_block = state.get('blocks').get(action.from)
+    const new_blocks = state.get('blocks').delete(action.from).splice(action.to, 0, from_block)
+    return state.set('blocks', new_blocks)
+  }
 }
 
 export function reducer (state = initialState, action) {
-  switch (action.type) {
-    case consts.CHANGE_TEXT:
-      return Object.assign({}, state, {
-        text: action.text
-      })
-    case consts.ADD_MARKDOWN_BLOCK:
-      return Object.assign({}, state, {
-        blocks: state.blocks.concat(Object.assign({}, consts.MARKDOWN_BLOCK, {
-          index: state.blocks.length
-        }))
-      })
-    case consts.ADD_CODE_BLOCK:
-      return Object.assign({}, state, {
-        blocks: state.blocks.concat(Object.assign({}, consts.CODE_BLOCK, {
-          index: state.blocks.length
-        }))
-      })
-    case consts.CHANGE_BLOCK_CONTENT:
-      const block = state.blocks[action.block_index]
-      const new_block = Object.assign({}, block, {content: action.content})
-      const new_blocks = state.blocks.concat([])
-      new_blocks[action.block_index] = new_block
-      return {
-        blocks: new_blocks
-      }
-    case consts.MOVE_BLOCK:
-      const from_block = state.blocks.splice(action.from, 1)
-      state.blocks.splice(action.to, 0, from_block[0])
-      return state
-    default:
-      return state
+  if (action_map[action.type] !== undefined) {
+    return action_map[action.type](state, action)
+  } else {
+    return state
   }
 }

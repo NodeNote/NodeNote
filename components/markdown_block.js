@@ -25,7 +25,6 @@ export default class MarkdownBlock extends Component {
   render () {
     let output
     const content = this.props.content ? this.props.content : ''
-    console.log(content)
     if (this.state.focus) {
       output = <textarea
         ref='textarea'

@@ -20,12 +20,8 @@ export default class Notebook extends Component {
       this.props.dispatch(createCodeBlock())
     }
   }
-      // <InputBlock script={this.props.text} onChange={this.handleOnChange.bind(this)}/>
   render () {
-      // {JSON.stringify(this.props.blocks, null, 2)}
-    console.log(this.props)
     return <div id='notebook'>
-      {JSON.stringify(this.props.blocks, null, 2)}
       <Blocks blocks={this.props.blocks} onChange={this.handleOnChange.bind(this)}/>
       <AddBlocksBlock onAddBlock={this.handleOnAddBlock.bind(this)}/>
     </div>
@@ -34,13 +30,13 @@ export default class Notebook extends Component {
 
 Notebook.propTypes = {
   dispatch: React.PropTypes.func.isRequired,
-  blocks: React.PropTypes.array.isRequired
+  blocks: React.PropTypes.object.isRequired
 }
 
 // ToDo this should be in the container
 const mapStateToProps = (state) => {
   return {
-    blocks: state.blocks
+    blocks: state.get('blocks')
   }
 }
 

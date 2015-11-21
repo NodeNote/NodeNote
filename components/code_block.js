@@ -3,17 +3,18 @@ import React, { Component, PropTypes } from 'react'
 
 export default class CodeBlock extends Component {
   handleOnChange (ev) {
-    this.props.onChange(this.props.block.index, ev.target.value)
+    this.props.onChange(this.props.index, ev.target.value)
   }
   render () {
     // return <Editor value={this.props.script} onChange={this.handleOnChange.bind(this)}/>
     return <div>
-      <textarea value={this.props.block.content} onChange={this.handleOnChange.bind(this)}/>
+      <textarea value={this.props.content} onChange={this.handleOnChange.bind(this)}/>
     </div>
   }
 }
 
 CodeBlock.propTypes = {
-  block: PropTypes.object.isRequired,
+  index: PropTypes.number.isRequired,
+  content: PropTypes.string,
   onChange: PropTypes.func.isRequired
 }
